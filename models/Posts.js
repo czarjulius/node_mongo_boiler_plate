@@ -1,14 +1,13 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-
 const PostSchema = new Schema({
     title:{
-        type: string,
+        type: String,
         required:true,
     },
     body:{
-        type:string,
+        type:String,
         required: true,
     },
     date:{
