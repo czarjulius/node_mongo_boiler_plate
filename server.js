@@ -1,14 +1,16 @@
-const express = require('express');
-const mongoose = require('mongoose');
-const {MONGO_URI} = require('./config');
-const postRoute = require('./routes/api/posts') 
+import "@babel/polyfill";
+import express from 'express';
+import mongoose from 'mongoose';
+import {MONGO_URI} from './config';
+import routes from './routes/index'
 
 const app = express()
 
 app.use(express.json())
-
-app.use('/api/posts', postRoute)
-
+app.use(routes)
+app.use('*', (req, res)=>{
+    res.send('route not found')
+})
 
 mongoose.connect(MONGO_URI,{
     useNewUrlParser: true,
